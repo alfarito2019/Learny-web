@@ -1,3 +1,16 @@
+// src/app/app.routes.ts
+
 import { Routes } from '@angular/router';
 
-export const routes: Routes = [];
+import { WelcomeComponent }      from './pages/welcome/welcome.component';
+import { LoginDocumentoComponent }   from './pages/login-documento/login-documento.component';
+import { LoginClaveComponent }       from './pages/login-clave/login-clave.component';
+import { ChatComponent }             from './pages/chat/chat.component';
+
+export const appRoutes: Routes = [
+  { path: '',             redirectTo: 'welcome', pathMatch: 'full' },
+  { path: 'welcome',      component: WelcomeComponent },
+  { path: 'login/documento', component: LoginDocumentoComponent },
+  { path: 'login/clave',  component: LoginClaveComponent },
+  { path: 'chat',         component: ChatComponent },
+];

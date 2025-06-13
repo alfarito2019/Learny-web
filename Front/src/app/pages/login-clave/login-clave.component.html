@@ -1,8 +1,7 @@
 <div class="login-container">
-    <div *ngIf="error" class="alert alert-danger">
-        {{ error }}
-    </div>
+
     <div class="login-card">
+        
         <div class="head">
             <img src="assets/img/Inicio.png" alt="imagen de davivienda">
             <div class="atras" (click)="goBack()">
@@ -11,8 +10,7 @@
             </div>
         </div>
 
-        <div class="body">
-
+        
             <div class="texto-box">
                 <span>Ingrese su clave virtual</span>
                 <div class="clave">
@@ -36,7 +34,10 @@
                 <h6>Términos y condiciones</h6>
             </div>
 
-
+            <div class="body">
+            <div *ngIf="error" class="alert alert-danger">
+            {{ error }}
+        </div>
         </div>
 
     </div>

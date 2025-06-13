@@ -1,1 +1,53 @@
-<p>login-documento works!</p>
+<div class="login-container">
+    <div class="login-card">
+        <div class="head">
+            <img src="assets/img/Inicio.png" alt="imagen de davivienda">
+            <div class="atras" (click)="goBack()">
+                <img src="assets/icons/back.svg" alt="icono-atras" />
+                <h4>Atrás</h4>
+            </div>
+        </div>
+
+        <div class="body">
+            <div class="texto-box">
+                <span>Seleccione el tipo de documento</span>
+                <div class="tipo-documento">
+                    <img src="assets/icons/id.svg" alt="icono-cedula" />
+                    <select [ngModel]="selectedTipo" (ngModelChange)="onTipoChange($event)">
+                        <option *ngFor="let tipo of tipoDocumentoOptions" [value]="tipo">
+                            {{ tipo }}
+                        </option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="texto-box">
+                <span>Seleccione el tipo de documento</span>
+                <div class="numero-documento">
+                    <input type="text" placeholder="Número de documento" [ngModel]="numeroDocumento"
+                        (ngModelChange)="onNumeroChange($event)" />
+                </div>
+            </div>
+
+            <div class="olvido-clave">
+                ¿Olvidó o bloqueó su clave virtual?
+            </div>
+
+            <div class="boton-inicio">
+                <button class="inicio-sesion" [disabled]="!validDocumento" (click)="goNext()">
+                    Iniciar sesión
+                </button>
+            </div>
+
+            <div class="qr-terminos">
+                <img src="assets/img/qr.png" alt="QR imagen" />
+                <div class="terminos">
+                    <h6>Términos y condiciones</h6>
+                    <h6>V.7.2.0</h6>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+</div>

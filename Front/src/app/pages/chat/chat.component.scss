@@ -20,7 +20,7 @@
   width: 100%;
   height: 100%;
   background: #ffffff;
-  font-family: 'Helvetica Neue Roman';
+  font-family: "Helvetica Neue Roman";
   border-radius: 2rem;
 
   header {
@@ -44,20 +44,24 @@
   }
 
   .back-button {
+    z-index: 10;
+    pointer-events: auto;
+    background: none;
+    border: none;
+    cursor: pointer;
     position: absolute;
+    z-index: 10;
     margin-top: 1.5rem;
     left: 1rem;
     background: none;
     border: none;
     padding: 0;
-    cursor: pointer;
 
     img {
       width: 50px;
       height: auto;
     }
   }
-
 
   .chat-subheader {
     display: flex;
@@ -67,7 +71,7 @@
     background-color: #ffffff;
     border-bottom: 1px solid #e0e0e0;
     font-size: 12px;
-    font-family: 'Helvetica Neue Bold';
+    font-family: "Helvetica Neue Bold";
     position: relative;
   }
 
@@ -92,8 +96,6 @@
     margin-left: 60px;
   }
 
-
-
   .chat-box {
     flex: 1;
     padding: 1rem;
@@ -116,7 +118,6 @@
         background: #e5e5ea;
         font-size: 10px;
 
-
         p {
           margin: 0;
         }
@@ -138,8 +139,8 @@
 
     .bot .bubble {
       align-self: flex-start;
-      background: #E1E1E1;
-      border: 1px solid #E1E1E1;
+      background: #e1e1e1;
+      border: 1px solid #e1e1e1;
       font-size: 10px;
     }
   }
@@ -190,24 +191,24 @@
   margin-top: 1rem;
   margin-left: 1rem;
   position: relative;
-  top:-30px;
+  top: -30px;
 
   button {
     width: fit-content; // ancho ajustado al contenido
-  text-align: center; // texto centrado dentro del botón
-  display: inline-block;
-  padding: 0.6rem 1.2rem;
+    text-align: center; // texto centrado dentro del botón
+    display: inline-block;
+    padding: 0.6rem 1.2rem;
     background-color: var(--rojo-davivienda);
     color: white;
     border: none;
     border-radius: 10px;
     font-size: 12px;
-    font-family: 'Helvetica Neue Roman';
+    font-family: "Helvetica Neue Roman";
     cursor: pointer;
   }
 
   .btn-video {
     background-color: var(--rojo-davivienda);
-    font-family: 'Helvetica Neue Roman';
+    font-family: "Helvetica Neue Roman";
   }
 }

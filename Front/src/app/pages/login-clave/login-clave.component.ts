@@ -50,7 +50,7 @@ export class LoginClaveComponent {
       next: resp => {
         if (resp.status === 'ok') {
           // Login correcto: navegar a /chat u otra ruta
-          this.router.navigate(['/chat'], { queryParams: { cedula: this.cedula} });
+          this.router.navigate(['/dashboard'], { queryParams: { cedula: this.cedula} });
         } else {
           // Status error con detail
           this.error = resp.detail || 'Error desconocido';

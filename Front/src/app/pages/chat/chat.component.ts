@@ -40,6 +40,10 @@ ngOnInit() {
     });
   }
 
+  volver() {
+    console.log("si llega a este metodo")
+    this.router.navigate(['/dashboard'], { queryParams: { cedula: this.cedula} });
+  }
   sendMessage() {
     const messageText = this.inputMessage.trim();
     if (!messageText) return;

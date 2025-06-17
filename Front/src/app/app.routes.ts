@@ -7,10 +7,12 @@ import { LoginDocumentoComponent }   from './pages/login-documento/login-documen
 import { LoginClaveComponent }       from './pages/login-clave/login-clave.component';
 import { ChatComponent }             from './pages/chat/chat.component';
 import { MostrarImagenComponent }    from './pages/mostrar-imagen/mostrar-imagen.component';
+import { DashboardComponent }    from './pages/dashboard/dashboard.component';
 
 export const appRoutes: Routes = [
   { path: '',             redirectTo: 'welcome', pathMatch: 'full' },
   { path: 'welcome',      component: WelcomeComponent },
+  { path: 'dashboard',      component: DashboardComponent },
   { path: 'login/documento', component: LoginDocumentoComponent },
   { path: 'login/clave',  component: LoginClaveComponent },
   { path: 'chat',         component: ChatComponent },

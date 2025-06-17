@@ -1,0 +1,95 @@
+:host {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  background-color: #757575;
+}
+
+.dashboard {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  margin: 100px;
+  width: 360px;
+  height: 690px;
+
+  .head {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    width: 100%;
+  }
+
+  .novedad {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    width: 100%;
+    padding-top: 15px;
+    padding-left: 15px;
+    padding-right: 15px;
+    background-color: var(--fondo-davivienda);
+
+    h1 {
+      font-family: var(--fuente-davivienda);
+      font-size: 0.9rem;
+      font-weight: 900;
+    }
+
+    .tarjeta {
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      align-items: flex-start;
+      width: 100%;
+      padding-left: 12px;
+      background-color: white;
+      border-radius: 20px;
+      padding-top: 15px;
+      padding-left: 15px;
+      padding-right: 15px;
+      padding-bottom: 15px;
+      gap: 12px;
+
+      h2 {
+        font-family: var(--fuente-davivienda);
+        font-size: 1rem;
+        font-weight: 900;
+      }
+
+      span {
+        font-family: var(--fuente-davivienda);
+        font-size: 0.8rem;
+        font-weight: 100;
+      }
+    }
+  }
+
+  .body {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    width: 100%;
+  }
+
+  img {
+    width: 100%;
+  }
+}
+
+.asistencia {
+  position: absolute;
+  right: 0;
+  bottom: 27vh;
+  width: 54px;
+  cursor: pointer;
+  img {
+    width: 100%;
+  }
+}

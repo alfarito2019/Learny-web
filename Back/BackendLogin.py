@@ -10,6 +10,10 @@ import subprocess
 import os
 from groq import Groq
 import traceback
+import numpy as np
+import cv2 
+
+from flask import send_from_directory
 
 app = Flask(__name__)
 CORS(app, resources={r"/*": {"origins": "http://localhost:4200"}}, supports_credentials=True)
@@ -31,7 +35,12 @@ df = pd.read_excel(bd_path)
 df["Cedula"] = df["Cedula"].astype(str).str.replace(".0", "", regex=False)
 df["Clave"] = df["Clave"].astype(str).str.replace(".0", "", regex=False)
 
-    
+
+@app.route('/Infografias/<filename>')
+def serve_infografia(filename):
+    return send_from_directory('Infografias', filename)
+
+
 def reemplazar_texto(input_image_path, output_image_path, texts_to_replace, new_texts, text_styles):
     # Leer la imagen de entrada
     image = cv2.imread(input_image_path)
@@ -131,6 +140,7 @@ def login():
         return jsonify({"status":"error","detail":"JSON mal formado"}), 400
 
     cliente = df[(df["Cedula"]==cedula)&(df["Clave"]==clave)]
+    print(cliente)
     if not cliente.empty:
         nombre = cliente.iloc[0]["Nombre"]
         return jsonify({"status":"ok","nombre":nombre})
@@ -155,24 +165,21 @@ def endpoint_generar_imagen():
     if not cedula:
         return jsonify({"error": "Cédula no proporcionada"}), 400
 
+    bd_path2 = os.path.join(BASE_DIR, 'BD.xlsx')
+    input_image_path = os.path.join(BASE_DIR, 'Infografias', 'Infografia.png')
+    output_image_path = os.path.join(BASE_DIR, 'Infografias', 'Infografia_Personalizada.png')
 
-    df = pd.read_excel('BD.xlsx', dtype={'Cedula': str})
-    df['Cedula'] = df['Cedula'].str.strip()
+    # Leer el Excel
+    df = pd.read_excel(bd_path2, dtype={'Cedula': str})
+    df['Cedula'] = df['Cedula'].astype(str).str.strip()
 
-    # Buscar la fila con la cédula
+    # Buscar la cédula
+    cedula = str(cedula).strip()
     fila = df[df['Cedula'] == cedula]
 
-    # if fila.empty:
-    #     print(f"No se encontró la cédula {cedula_recuperada} en la base de datos.")
-    #     sys.exit(1)  # Detener ejecución si no se encontró
-    # else:
-    #     print("Fila encontrada:", fila)
+    print(fila)
 
-    # Rutas de la imagen de entrada y salida
-    input_image_path = r'Infografias\Infografia.png'
-
-    output_image_path = r'Infografias\Infografia_Personalizada.png'
-
+    # Verificar existencia de la imagen base
     print("¿Existe la imagen?", os.path.exists(input_image_path))
 
     # Obtener datos de la fila
@@ -218,9 +225,9 @@ def endpoint_generar_imagen():
                 ,"$"+convertir_string(pago_intereses)]
 
 
-    roboto_black=r'Tipografias\Roboto-Black.ttf'
-    roboto_bold=r'Tipografias\Roboto-Bold.ttf'
-    roboto_regular=r'Tipografias\Roboto-Regular.ttf'
+    roboto_black = os.path.join(BASE_DIR, 'Tipografias', 'Roboto-Black.ttf')
+    roboto_bold = os.path.join(BASE_DIR, 'Tipografias', 'Roboto-Bold.ttf')
+    roboto_regular = os.path.join(BASE_DIR, 'Tipografias', 'Roboto-Regular.ttf')
 
     negro=(0,0,0)
     blanco=(255,255,255)
@@ -251,7 +258,9 @@ def endpoint_generar_imagen():
     resultado=reemplazar_texto(input_image_path, output_image_path, texts_to_replace, new_texts, text_styles)
     
     #return jsonify({"mensaje": resultado}), 200
-    return jsonify({"imagen_url": f"http://localhost:5001/Infografias/Infografia_Personalizada.png"}), 200
+    return jsonify({
+        "imagen_url": "http://localhost:5000/Infografias/Infografia_Personalizada.png"
+    }), 200
 
 
 @app.post("/chat")

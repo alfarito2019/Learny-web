@@ -78,7 +78,7 @@ ngOnInit() {
       });
   }
 
-  generarInfografia(cedulas: string) {
+  generarInfografia() {
 
     
 
@@ -89,7 +89,7 @@ ngOnInit() {
     this.loading = true;
 
     this.http
-      .post<any>('http://localhost:5001/generar-imagen', { cedula })
+      .post<any>('http://localhost:5000/generar-imagen', { cedula })
       .subscribe({
         next: (response) => {
           this.loading = false;

@@ -1,0 +1,7 @@
+<div class="container" *ngIf="imagePath; else noImage">
+  <img [src]="imagePath" alt="Infografía generada" class="imagen-generada">
+</div>
+
+<ng-template #noImage>
+  <p class="mensaje-error">No se ha generado la imagen.</p>
+</ng-template>

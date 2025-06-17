@@ -1,1 +1,39 @@
-<p>chat works!</p>
+<div class="chat_completo">
+    <div class="chat-container">
+        <header>
+
+            <button class="back-button">
+                <img src="/assets/img/Volver1.png" alt="Volver" />
+            </button>
+            <h1>Hola, DANIEL</h1>
+        </header>
+
+        <div class="chat-subheader">
+            <button class="back-button">
+                <img src="assets/img/Volver2.png" alt="Volver2" />
+            </button>
+            <span class="subheader-title">Asistencia en línea</span>
+        </div>
+
+
+        <section class="chat-box">
+            <div *ngFor="let msg of messages" [ngClass]="msg.sender">
+                <div class="bubble">
+                    <p>{{ msg.text }}</p>
+                    <small>{{ msg.time }}</small>
+                </div>
+            </div>
+        </section>
+
+        <div *ngIf="mostrarBotones" class="botonera">
+        <button class="btn-infografia"(click)="generarInfografia('1234')">Generar Infografía</button>
+        <button class="btn-video"(click)="generarVideo()">Generar Video</button>
+        </div>
+
+        <footer>
+            <input type="text" [(ngModel)]="inputMessage" (keyup.enter)="sendMessage()"
+                placeholder="Escriba su mensaje" />
+            <button (click)="sendMessage()">➤</button>
+        </footer>
+    </div>
+</div>

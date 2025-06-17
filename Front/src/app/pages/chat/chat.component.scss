@@ -1,0 +1,213 @@
+:host {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: #757575;
+}
+
+.chat_completo {
+  display: flex;
+  width: 360px;
+  height: 690px;
+  padding-top: 10vh;
+  padding-bottom: 10vh;
+}
+
+.chat-container {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+  background: #ffffff;
+  font-family: 'Helvetica Neue Roman';
+  border-radius: 2rem;
+
+  header {
+    background: var(--rojo-davivienda);
+    color: #ffff;
+    padding: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-top-left-radius: 2rem;
+    border-top-right-radius: 2rem;
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+    font-size: 10px;
+    position: relative;
+  }
+
+  header h1 {
+    margin-top: 2rem;
+    font-size: 12px;
+  }
+
+  .back-button {
+    position: absolute;
+    margin-top: 1.5rem;
+    left: 1rem;
+    background: none;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+
+    img {
+      width: 50px;
+      height: auto;
+    }
+  }
+
+
+  .chat-subheader {
+    display: flex;
+    align-items: center;
+    justify-content: left;
+    padding: 0.75rem 1rem;
+    background-color: #ffffff;
+    border-bottom: 1px solid #e0e0e0;
+    font-size: 12px;
+    font-family: 'Helvetica Neue Bold';
+    position: relative;
+  }
+
+  .chat-subheader .back-button {
+    position: absolute;
+    margin-top: auto;
+    background: none;
+    border: none;
+    padding: 0;
+    margin-right: 0.75rem;
+    cursor: pointer;
+
+    img {
+      width: 50px;
+      height: auto;
+    }
+  }
+
+  .subheader-title {
+    color: #000000;
+    position: relative;
+    margin-left: 60px;
+  }
+
+
+
+  .chat-box {
+    flex: 1;
+    padding: 1rem;
+    overflow-y: auto;
+    background: #ffffff;
+    font-size: 10px;
+
+    .bot,
+    .user {
+      display: flex;
+      flex-direction: column;
+      margin-bottom: 10px;
+      font-size: 10px;
+
+      .bubble {
+        max-width: 70%;
+        padding: 0.75rem 1rem;
+        border-radius: 10px;
+        position: relative;
+        background: #e5e5ea;
+        font-size: 10px;
+
+
+        p {
+          margin: 0;
+        }
+
+        small {
+          display: block;
+          margin-top: 0.3rem;
+          font-size: 10px;
+          color: #5b5b5b;
+        }
+      }
+    }
+
+    .user .bubble {
+      align-self: flex-end;
+      background: #daf1ff;
+      font-size: 10px;
+    }
+
+    .bot .bubble {
+      align-self: flex-start;
+      background: #E1E1E1;
+      border: 1px solid #E1E1E1;
+      font-size: 10px;
+    }
+  }
+
+  footer {
+    display: flex;
+    // border-top: 1px solid #ccc;
+    padding: 1rem;
+    background: #ffffff;
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+    border-bottom-left-radius: 2rem;
+    border-bottom-right-radius: 2rem;
+    font-size: 10px;
+
+    input {
+      flex: 1;
+      padding: 0.5rem;
+      border: 1px solid #e1e1e1;
+      border-radius: 5px;
+      margin-right: 0.5rem;
+      font-size: 12px;
+    }
+
+    input:focus {
+      outline: none; // quita el contorno negro por defecto
+      border: 1px solid #414141; // color personalizado del borde
+    }
+
+    button {
+      background: var(--rojo-davivienda);
+      color: #fff;
+      border: none;
+      border-radius: 50%;
+      width: 36px;
+      height: 36px;
+      font-size: 1.2rem;
+      cursor: pointer;
+    }
+  }
+}
+
+.botonera {
+  display: flex;
+  flex-direction: column; // botones uno debajo del otro
+  align-items: flex-start; // alinea todo a la izquierda
+  gap: 0.5rem;
+  margin-top: 1rem;
+  margin-left: 1rem;
+  position: relative;
+  top:-30px;
+
+  button {
+    width: fit-content; // ancho ajustado al contenido
+  text-align: center; // texto centrado dentro del botón
+  display: inline-block;
+  padding: 0.6rem 1.2rem;
+    background-color: var(--rojo-davivienda);
+    color: white;
+    border: none;
+    border-radius: 10px;
+    font-size: 12px;
+    font-family: 'Helvetica Neue Roman';
+    cursor: pointer;
+  }
+
+  .btn-video {
+    background-color: var(--rojo-davivienda);
+    font-family: 'Helvetica Neue Roman';
+  }
+}

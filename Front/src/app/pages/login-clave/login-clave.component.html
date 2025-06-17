@@ -1,7 +1,7 @@
 <div class="login-container">
 
     <div class="login-card">
-        
+
         <div class="head">
             <img src="assets/img/Inicio.png" alt="imagen de davivienda">
             <div class="atras" (click)="goBack()">
@@ -10,34 +10,35 @@
             </div>
         </div>
 
-        
-            <div class="texto-box">
-                <span>Ingrese su clave virtual</span>
-                <div class="clave">
-                    <input type="password" placeholder="Clave virtual" [ngModel]="clave"
-                        (ngModelChange)="onClaveChange($event)" />
-                </div>
+
+        <div class="body">
+        <div class="texto-box">
+            <span>Ingrese su clave virtual</span>
+            <div class="clave">
+                <input type="password" placeholder="Clave virtual" [ngModel]="clave"
+                    (ngModelChange)="onClaveChange($event)" />
             </div>
-
-            <div class="olvido-clave">
-                ¿Olvidó o bloqueó su clave virtual?
-            </div>
-
-            <div class="boton-inicio">
-                <button class="inicio-sesion" [disabled]="!validDocumento" (click)="onSubmit()">
-                    Iniciar sesión
-                </button>
-            </div>
-
-
-            <div class="terminos">
-                <h6>Términos y condiciones</h6>
-            </div>
-
-            <div class="body">
-            <div *ngIf="error" class="alert alert-danger">
-            {{ error }}
         </div>
+
+        <div class="olvido-clave">
+            ¿Olvidó o bloqueó su clave virtual?
+        </div>
+
+        <div class="boton-inicio">
+            <button class="inicio-sesion" [disabled]="!validDocumento" (click)="onSubmit()">
+                Iniciar sesión
+            </button>
+        </div>
+
+
+        <div class="terminos">
+            <h6>Términos y condiciones</h6>
+        </div>
+
+        
+            <div *ngIf="error" class="alert alert-danger">
+                {{ error }}
+            </div>
         </div>
 
     </div>

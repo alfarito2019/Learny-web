@@ -1,19 +1,30 @@
+
 :host {
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100%;
-  background-color: #757575;
+  height: 100vh;
+  background-color: #141414;
 }
 
-.dashboard {
+.dashboard-container {
+  display: flex;
+  width: 300px;
+  height: 690px;
+  padding-top: 10vh;
+  padding-bottom: 10vh;
+}
+
+.dashboard-card {
+  width: 100%;
+  height: 100%;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
-  align-items: center;
-  margin: 100px;
-  width: 360px;
-  height: 690px;
+  overflow: hidden;
+  background-color: #ebecf0;
+  border-radius: 2rem;
 
   .head {
     display: flex;
@@ -83,11 +94,12 @@
   }
 }
 
+
 .asistencia {
   position: absolute;
   right: 0;
-  bottom: 27vh;
-  width: 54px;
+  bottom: 25vh;
+  width: 50px;
   cursor: pointer;
   img {
     width: 100%;

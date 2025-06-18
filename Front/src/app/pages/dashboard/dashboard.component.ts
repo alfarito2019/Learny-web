@@ -1,27 +1,49 @@
-import { Component } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
-import { LoginService } from '../../services/login.service';
-
+import { Component, OnInit }   from '@angular/core';
+import { CommonModule }         from '@angular/common';
+import { Router, ActivatedRoute } from '@angular/router';
+import { UsuarioService, UsuarioResponse } from '../../services/usuario.service';
+import { HttpClientModule }     from '@angular/common/http';
 @Component({
   selector: 'app-dashboard',
-  imports: [],
+  imports: [CommonModule, HttpClientModule],
   templateUrl: './dashboard.component.html',
   styleUrl: './dashboard.component.scss',
 })
 export class DashboardComponent {
   cedula: string = '';
-  clave: string = ''; 
+  nombre: string = '';
+  error:  string = ''; 
 
   constructor(
     private route:    ActivatedRoute,
-    private loginSvc: LoginService,
-    private router: Router) {}
+    private usuarioSvc: UsuarioService,
+    private router:   Router) {}
 
   ngOnInit() {
     // Aquí lees la cédula que vino como ?cedula=1234
+
     this.route.queryParams.subscribe(params => {
       this.cedula = params['cedula'] || '';
       console.log('Cédula recibida:', this.cedula);
+    });
+
+    if (this.cedula) {
+      this.cargarNombre();
+    }
+  }
+
+  cargarNombre() {
+    this.usuarioSvc.obtenerUsuario(this.cedula).subscribe({
+      next: (res: UsuarioResponse) => {
+        if (res.status === 'ok' && res.nombre) {
+          this.nombre = res.nombre;
+        } else {
+          this.error = res.detail || 'Usuario no encontrado';
+        }
+      },
+      error: err => {
+        this.error = err.error?.detail || 'Error al conectar con el servidor';
+      }
     });
   }
 

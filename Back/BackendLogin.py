@@ -307,6 +307,24 @@ def chat():
             "mostrar_botones": False
         }), 500
 
+
+@app.get("/usuario/<cedula>")
+def obtener_usuario(cedula):
+    try:
+        # Hacemos strip para evitar espacios
+        cedula = cedula.strip()
+        cliente = df[df["Cedula"] == cedula]
+        app.logger.info(f"📥 Petición /usuario para cédula: '{cedula}' → filas encontradas: {len(cliente)}")
+
+        if cliente.empty:
+            return jsonify({"status": "error", "detail": "Usuario no encontrado"}), 404
+
+        nombre = cliente.iloc[0]["Nombre"]
+        return jsonify({"status": "ok", "nombre": nombre})
+    except Exception as e:
+        app.logger.error(f"❌ Error en /usuario: {e}", exc_info=True)
+        return jsonify({"status": "error", "detail": "Error interno"}), 500
+
 if __name__ == "__main__":
     app.run(debug=True, port=5000)
     

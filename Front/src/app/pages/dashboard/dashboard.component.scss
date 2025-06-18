@@ -27,11 +27,24 @@
   border-radius: 2rem;
 
   .head {
+    position: relative;
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
     align-items: center;
     width: 100%;
+
+    span {
+      position:absolute;
+      top: 20px;
+      right: auto;
+      font-family: var(--fuente-davivienda);
+      font-weight: 300;
+      font-size: 0.8rem;
+      color: white;
+
+    }
+
   }
 
   .novedad {
